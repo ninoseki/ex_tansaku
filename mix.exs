@@ -4,7 +4,7 @@ defmodule ExTansaku.MixProject do
   def project do
     [
       app: :ex_tansaku,
-      version: "0.1.0",
+      version: "0.1.1",
       escript: escript(),
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
@@ -25,13 +25,6 @@ defmodule ExTansaku.MixProject do
   defp escript do
     [
       main_module: ExTansaku.CLI
-    ]
-  end
-
-  # Run "mix help compile.app" to learn about applications.
-  def application do
-    [
-      extra_applications: [:logger]
     ]
   end
 
