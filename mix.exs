@@ -42,7 +42,6 @@ defmodule ExTansaku.MixProject do
   defp package() do
     [
       maintainers: ["Manabu Niseki"],
-      files: ["lib", "mix.exs", ".formatter.exs", "README.md"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/ninoseki/ex_tansaku"}
     ]

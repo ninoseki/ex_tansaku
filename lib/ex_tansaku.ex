@@ -1,27 +1,6 @@
 defmodule ExTansaku do
   def paths do
-    current_dir = Path.dirname(__ENV__.file)
-
-    Path.expand("./config/paths.txt", current_dir)
-    |> Path.absname()
-    |> read_lines
-  end
-
-  @spec read_lines(
-          binary()
-          | maybe_improper_list(
-              binary() | maybe_improper_list(any(), binary() | []) | char(),
-              binary() | []
-            )
-        ) :: [any()]
-  def read_lines(path) do
-    if File.exists?(path) do
-      File.stream!(path)
-      |> Stream.map(&String.trim/1)
-      |> Enum.to_list()
-    else
-      []
-    end
+    ExTansaku.Config.paths()
   end
 
   @spec default_user_agent() :: <<_::1024>>
