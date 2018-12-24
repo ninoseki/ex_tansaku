@@ -44,7 +44,8 @@ defmodule ExTansaku do
   end
 
   def url_to_crawl(base_url) do
-    Enum.map(paths(), fn path -> url_for(base_url, path) end)
+    paths()
+    |> Enum.map(fn path -> url_for(base_url, path) end)
   end
 
   def get(url) do
