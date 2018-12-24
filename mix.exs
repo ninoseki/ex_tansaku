@@ -48,8 +48,6 @@ defmodule ExTansaku.MixProject do
 
   defp package() do
     [
-      # These are the default files included in the package
-      files: ["lib", "mix.exs", "README.md"],
       maintainers: ["Manabu Niseki"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/ninoseki/ex_tansaku"}

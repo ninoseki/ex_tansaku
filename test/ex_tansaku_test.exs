@@ -15,23 +15,21 @@ defmodule ExTansakuTest do
   end
 
   describe "#crawl" do
-    setup_with_mocks([
-      {ExTansaku, [:passthrough],
-       [paths: fn -> ["__admin", "__cache/", "__pma__", "_.htpasswd"] end]}
-    ]) do
-      :ok
-    end
-
-    test_with_server "returns 200 with /__admin" do
+    test_with_server "returns 200 with /__admin & /__cache" do
       route("/__admin", FakeServer.HTTP.Response.ok(["test"], %{"content-type" => "text/html"}))
       route("/__cache/", FakeServer.HTTP.Response.ok(["test"], %{"content-type" => "text/html"}))
 
-      results = ExTansaku.crawl("http://#{FakeServer.address()}")
+      with_mocks([
+        {ExTansaku, [:passthrough],
+         [paths: fn -> ["__admin", "__cache/", "__pma__", "_.htpasswd"] end]}
+      ]) do
+        results = ExTansaku.crawl("http://#{FakeServer.address()}")
 
-      assert length(results) == 2
-      first = List.first(results)
-      {_, _, res} = first
-      assert res.request_url == "http://#{FakeServer.address()}/__admin"
+        assert length(results) == 2
+        first = List.first(results)
+        {_, _, res} = first
+        assert res.request_url == "http://#{FakeServer.address()}/__admin"
+      end
     end
   end
 end
