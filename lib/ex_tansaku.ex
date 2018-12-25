@@ -1,4 +1,8 @@
 defmodule ExTansaku do
+  @moduledoc """
+  ExTansaku main module
+  """
+
   def paths do
     ExTansaku.Config.paths()
   end
@@ -49,7 +53,9 @@ defmodule ExTansaku do
   end
 
   def crawl(base_url) do
-    url_to_crawl(base_url)
+    urls = url_to_crawl(base_url)
+
+    urls
     |> Enum.chunk_every(20)
     |> Enum.map(&do_filter/1)
     |> Enum.to_list()
