@@ -1,4 +1,8 @@
 defmodule ExTansaku.Config do
+  @moduledoc """
+  ExTansaku config module
+  """
+
   def paths do
     [
       "_",

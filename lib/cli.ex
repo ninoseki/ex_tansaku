@@ -1,4 +1,8 @@
 defmodule ExTansaku.CLI do
+  @moduledoc """
+  ExTansaku CLI module
+  """
+
   def main(args \\ []) do
     args
     |> parse_args
@@ -19,8 +23,9 @@ defmodule ExTansaku.CLI do
   defp execute(options) do
     if options[:crawl] do
       base_url = options[:crawl]
+      results = ExTansaku.crawl(base_url)
 
-      ExTansaku.crawl(base_url)
+      results
       |> Enum.each(fn result ->
         {_, _, res} = result
 
