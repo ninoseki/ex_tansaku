@@ -3,8 +3,10 @@ defmodule ExTansaku do
   ExTansaku main module
   """
 
+  alias ExTansaku.Config
+
   def paths do
-    ExTansaku.Config.paths()
+    Config.paths()
   end
 
   @spec default_user_agent() :: <<_::1024>>
